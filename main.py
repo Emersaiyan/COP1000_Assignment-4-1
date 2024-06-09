@@ -1,36 +1,24 @@
-"""
-This program calculates prices for custom house signs.
-"""
+# Prompt user to enter employee's name, number of shifts, number of transactions, and transaction dollar value
+employee_name = input("Enter employee's name: ")
+num_shifts = int(input("Enter number of shifts: "))
+num_transactions = int(input("Enter number of transactions: "))
+transaction_value = float(input("Enter transaction dollar value: "))
 
-# Declare and initialize variables here.
-charge = 0.00
-numChars = int(input("Enter number of characters: "))
-woodType = input("Enter wood type (pine or oak): ")
-color = input("Enter color of characters (black, white, or gold): ")
+# Calculate productivity score
+productivity_score = (transaction_value / num_transactions) / num_shifts
 
-# Charge for this sign.
-charge += 35.00
+# Initialize bonus variable
+bonus = 0
 
-# Number of characters.
+# Determine bonus based on productivity score
+if productivity_score <= 30:
+    bonus = 50.00
+elif productivity_score <= 69:
+    bonus = 75.00
+elif productivity_score <= 199:
+    bonus = 100.00
+else:
+    bonus = 200.00
 
-if numChars > 5:
-  charge += (numChars - 5) * 4
-  
-# Color of characters.
-
-if color == "gold":
-  charge += 15.00
-elif color == "black" or color == "white":
-  charge += 0
-
-# Type of wood.
-
-if woodType == "oak":
-  charge += 20
-elif woodType == "pine":
-  charge += 0
-
-# Write assignment and if statements here as appropriate.
-
-# Output Charge for this sign.
-print("The charge for this sign is $" + str(charge))
+# Output the employee's name and bonus
+print(f"{employee_name}'s bonus is ${bonus:.2f}")
